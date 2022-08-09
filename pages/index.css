@@ -29,3 +29,15 @@
 @import url(../blocks/profile/__button/_type/profile__button_type_add.css);
 
 @import url(../blocks/profile/__button/_type/profile__button_type_edit.css);
+
+@import url(../blocks/place/place.css);
+
+@import url(../blocks/place/__container/place__container.css);
+
+@import url(../blocks/place/__image/place__image.css);
+
+@import url(../blocks/place/__elements/place__elements.css);
+
+@import url(../blocks/place/__title/place__title.css);
+
+@import url(../blocks/place/__button/place__button.css);
