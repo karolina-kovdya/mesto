@@ -1,0 +1,12 @@
+.profile__user-subname {
+    margin: 16px 0 0;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 1.22;
+    font-weight: 400;
+    color: #fff;
+    max-width: 336px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}

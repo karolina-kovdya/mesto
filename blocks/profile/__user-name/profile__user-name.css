@@ -1,0 +1,12 @@
+.profile__user-name {
+    margin: 0;
+    font-size: normal;
+    font-size: 42px;
+    line-height: 1.14;
+    font-weight: 500;
+    color: #fff;
+    max-width: 336px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}

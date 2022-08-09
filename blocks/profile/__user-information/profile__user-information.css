@@ -1,0 +1,6 @@
+.profile__user-information {
+    display: flex;
+    flex-direction: column;
+    margin: 22px 18px 25px 30px;
+    padding: 0;
+}
