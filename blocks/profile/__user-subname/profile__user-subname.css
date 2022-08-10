@@ -1,5 +1,5 @@
 .profile__user-subname {
-    margin: 16px 0 0;
+    margin: 7px 0 0;
     font-style: normal;
     font-size: 18px;
     line-height: 1.22;
@@ -9,4 +9,17 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+}
+
+@media screen and (max-width: 590px) {
+    .profile__user-subname {
+        text-align: center
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .profile__user-subname {
+        font-size: 14px;
+        line-height: 1.21;
+    }
 }

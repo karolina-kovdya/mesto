@@ -1,5 +1,5 @@
 .header {
-    max-width: 880px;
+    max-width: 68.75%;
     height: 74px;
     margin: 45px auto 0;
     padding: 0;
@@ -8,3 +8,17 @@
     align-items: flex-start;
     border-bottom: 1px solid rgba(84, 84, 84, .7);
 }
+
+@media screen and (max-width: 1040px) {
+    .header {
+        max-width: 84.615%;
+    }
+}
+
+@media screen and (max-width: 590px) {
+    .header {
+        max-width: 100%;
+        margin: 28px 0 0;
+    }
+}
+

@@ -1,8 +1,26 @@
 .profile__button_type_edit {
     margin: 37px 0 59px;
     padding: 0;
-    background-image: url(../../../../images/Edit\ Button.png);
+    background-image: url(../../../../images/Vectorpen.png);
+    background-repeat: no-repeat;
+    background-position: center;
     width: 24px;
     height: 24px;
     border: 1px solid #fff;
+}
+
+@media screen and (max-width: 590px) {
+    .profile__button_type_edit {
+        position: absolute;
+        top: 154px;
+        right: 19px;
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .profile__button_type_edit {
+        width: 18px;
+        height: 18px;
+    }
 }
