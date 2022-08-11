@@ -5,6 +5,7 @@
     border: 0;
     opacity: 1;
     transition: opacity .3 ease;
+    cursor: pointer;
 }
 
 .place__button:hover {
