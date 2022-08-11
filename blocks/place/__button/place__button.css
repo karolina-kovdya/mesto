@@ -3,5 +3,10 @@
     height: 19px;
     background-image: url(../../../images/Vectorlike.png);
     border: 0;
-    
+    opacity: 1;
+    transition: opacity .3 ease;
+}
+
+.place__button:hover {
+    opacity: .5;
 }
