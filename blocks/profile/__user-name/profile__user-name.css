@@ -5,7 +5,7 @@
     line-height: 1.14;
     font-weight: 500;
     color: #fff;
-    max-width: 336px;
+    max-width: 294px;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
@@ -13,6 +13,7 @@
 
 @media screen and (max-width: 425px) {
     .profile__user-name {
+        max-width: 189px;
         font-size: 27px;
         line-height: 1.22;    
     }

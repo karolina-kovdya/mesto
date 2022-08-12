@@ -1,7 +1,9 @@
 .place__button {
     width: 22px;
     height: 19px;
-    background-image: url(../../../images/Vectorlike.png);
+    background-image: url(../../../images/Vectorlike.svg);
+    background-repeat: no-repeat;
+    background-color: inherit;
     border: 0;
     opacity: 1;
     transition: opacity .3 ease;
