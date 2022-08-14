@@ -1,5 +1,7 @@
 let popup = document.querySelector('.popup');
 
+let form = document.querySelector('.popup__form')
+
 let openPopup = document.querySelector('.profile__button_type_edit');
 
 let closePopup = document.querySelector('.popup__button-close');
@@ -33,12 +35,13 @@ function formSubmitHandler (evt) {
     userName.textContent = nameInput.value;
     userJob.textContent = jobInput.value;
 
+    popupClose();
 }
 
 openPopup.addEventListener('click', popupOpen);
 
 closePopup.addEventListener('click', popupClose);
 
-formInput.addEventListener('submit', formSubmitHandler); 
+form.addEventListener('submit', formSubmitHandler); 
 
 
