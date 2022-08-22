@@ -42,6 +42,10 @@
 
 @import url(../blocks/place/__button/place__button.css);
 
+@import url(../blocks/place/__button/_type/place__button_type_like.css);
+
+@import url(../blocks/place/__button/_type/place__button_type_delete.css);
+
 @import url(../blocks/footer/footer.css);
 
 @import url(../blocks/footer/__copyright/foter__copyright.css);
