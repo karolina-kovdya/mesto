@@ -2,11 +2,7 @@
     max-width: 68.75%;
     margin: 51px auto 0;
     padding: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(225px, max-content));
-    grid-template-rows: auto;
-    grid-column-gap: 17px;
-    grid-row-gap: 20px;
+    display: block;
 }
 
 @media screen and (max-width: 1040px) {
