@@ -48,6 +48,13 @@ initialCards.forEach((element) => {
   newCardElement.querySelector('.place__title').textContent = element.name;
   newCardElement.querySelector('.place__image').src = element.link;
 
+  newCardElement
+  .querySelector('.place__button_type_delete')
+  .addEventListener('click', (e) => {
+  const itemElement = e.target.closest('.item');
+  itemElement.remove()
+  });
+
   listElement.prepend(newCardElement);
 });
 
@@ -74,6 +81,13 @@ function addCard(titleValue, fotoValue) {
 
   newCardElement.querySelector('.place__title').textContent = titleValue;
   newCardElement.querySelector('.place__image').src = fotoValue;
+  
+  newCardElement
+  .querySelector('.place__button_type_delete')
+  .addEventListener('click', (e) => {
+  const itemElement = e.target.closest('.item');
+  itemElement.remove()
+  });
 
   listElement.prepend(newCardElement);
 }
