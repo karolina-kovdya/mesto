@@ -41,6 +41,8 @@ const titleInput = document.querySelector('.form__item_el_title');
 const fotoInput = document.querySelector('.form__item_el_foto');
 const templateElement = document.querySelector('.template');
 const listElement = document.querySelector('.place__list');
+const popupCloseEdit = document.querySelector('.popup__close-edit');
+const popupCloseAdded = document.querySelector('.popup__close-added');
 
 initialCards.forEach((element) => {
   const newCardElement = templateElement.content.cloneNode(true);
@@ -50,10 +52,7 @@ initialCards.forEach((element) => {
 
   newCardElement
   .querySelector('.place__button_type_delete')
-  .addEventListener('click', (e) => {
-  const itemElement = e.target.closest('.item');
-  itemElement.remove()
-  });
+  .addEventListener('click',deleteCard)
 
   listElement.prepend(newCardElement);
 });
@@ -69,11 +68,21 @@ function openPopupAdded() {
   popupElementAdded.classList.add('popup_opened');
 }
 
-function formSubmitHandler(evt) {
+function closePopupEdit() {
+  popupElementEdit.classList.remove('popup_opened');
+}
+
+function closePopupAdded() {
+  popupElementAdded.classList.remove('popup_opened');
+}
+
+function HandlerSumbitEdit(evt) {
   evt.preventDefault();
 
   userName.textContent = nameInput.value;
   userJob.textContent = jobInput.value;
+
+  closePopupEdit();
 }
 
 function addCard(titleValue, fotoValue) {
@@ -84,12 +93,14 @@ function addCard(titleValue, fotoValue) {
   
   newCardElement
   .querySelector('.place__button_type_delete')
-  .addEventListener('click', (e) => {
-  const itemElement = e.target.closest('.item');
-  itemElement.remove()
-  });
+  .addEventListener('click',deleteCard);
 
   listElement.prepend(newCardElement);
+}
+
+function deleteCard(e) {
+  const itemElement = e.target.closest('.item');
+  itemElement.remove()
 }
 
 function HandlerSumbitAdd(evt) {
@@ -99,11 +110,15 @@ function HandlerSumbitAdd(evt) {
   const foto = fotoInput.value;
 
   addCard(title, foto);
+
+  closePopupAdded();
 }
 
 popupEdit.addEventListener('click', openPopupEdit);
 popupAdded.addEventListener('click', openPopupAdded);
-formElementedit.addEventListener('submit', formSubmitHandler);
+formElementedit.addEventListener('submit', HandlerSumbitEdit);
 formElementAdded.addEventListener('submit', HandlerSumbitAdd);
+popupCloseEdit.addEventListener('click', closePopupEdit);
+popupCloseAdded.addEventListener('click', closePopupAdded);
 
 
