@@ -43,6 +43,7 @@ const templateElement = document.querySelector('.template');
 const listElement = document.querySelector('.place__list');
 const popupCloseEdit = document.querySelector('.popup__close-edit');
 const popupCloseAdded = document.querySelector('.popup__close-added');
+const likeElement = document.querySelector('place__button_type_like');
 
 initialCards.forEach((element) => {
   const newCardElement = templateElement.content.cloneNode(true);
@@ -50,9 +51,8 @@ initialCards.forEach((element) => {
   newCardElement.querySelector('.place__title').textContent = element.name;
   newCardElement.querySelector('.place__image').src = element.link;
 
-  newCardElement
-  .querySelector('.place__button_type_delete')
-  .addEventListener('click',deleteCard)
+  newCardElement.querySelector('.place__button-delete').addEventListener('click', deleteCard);
+  newCardElement.querySelector('.place__button-like').addEventListener('click', likeCard);
 
   listElement.prepend(newCardElement);
 });
@@ -90,10 +90,9 @@ function addCard(titleValue, fotoValue) {
 
   newCardElement.querySelector('.place__title').textContent = titleValue;
   newCardElement.querySelector('.place__image').src = fotoValue;
-  
-  newCardElement
-  .querySelector('.place__button_type_delete')
-  .addEventListener('click',deleteCard);
+
+  newCardElement.querySelector('.place__button-delete').addEventListener('click', deleteCard);
+  newCardElement.querySelector('.place__button-like').addEventListener('click', likeCard);
 
   listElement.prepend(newCardElement);
 }
@@ -101,6 +100,11 @@ function addCard(titleValue, fotoValue) {
 function deleteCard(e) {
   const itemElement = e.target.closest('.item');
   itemElement.remove()
+}
+
+function likeCard(e) {
+  const like = e.target
+  e.target.classList.toggle('place__button-like_active');
 }
 
 function HandlerSumbitAdd(evt) {
