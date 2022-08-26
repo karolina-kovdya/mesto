@@ -59,7 +59,7 @@ initialCards.forEach((element) => {
 
   newCardElement.querySelector('.place__button-delete').addEventListener('click', deleteCard);
   newCardElement.querySelector('.place__button-like').addEventListener('click', likeCard);
-  newCardElement.querySelector('.place__container').addEventListener('click', openPopupShow);
+  newCardElement.querySelector('.place__image').addEventListener('click', openPopupShow);
 
   listElement.prepend(newCardElement);
 });
