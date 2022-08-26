@@ -4,6 +4,7 @@
     margin: 0;
     object-fit: cover;
     overflow: hidden;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 1040px) {
