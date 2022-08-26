@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="./pages/index.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Место</title>
 </head>
+
 <body class="body">
   <div class="page">
     <header class="header">
       <div class="header__logo"></div>
     </header>
     <main class="content">
-      
+
       <section class="profile">
         <div class="profile__container">
           <img class="profile__avatar" src="./images/avatar.jpg" alt="фото профиля">
@@ -21,63 +23,72 @@
             <p class="profile__user-subname">Исследователь океана</p>
           </div>
           <button class="profile__button profile__button_type_edit" type="button"></button>
-        </div>      
+        </div>
         <button class="profile__button profile__button_type_add" type="button"></button>
       </section>
-        
+
       <section class="place">
         <ul class="place__list">
         </ul>
       </section>
     </main>
-    
+
     <footer class="footer">
-      <p class="footer__copyright">&copy; 2020 Mesto Russia</p>   
+      <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
 
-    <section class="popup">
+    <section class="popup popup_edit">
       <div class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="popup__form" name="popup-form">
-          <fieldset class="popup__input">
-            <input type="text" name="user-name" placeholder="Жак-Ив Кусто" class="popup__item popup__item_el_name" required>
-            <input type="text" name="user-job" placeholder="Исследователь океана" class="popup__item popup__item_el_job" required>
+        <form class="form form_edit" name="popup-form">
+          <fieldset class="form__input">
+            <input type="text" name="user-name" placeholder="О себе" class="form__item form__item_el_name" required>
+            <input type="text" name="user-job" placeholder="О работе" class="form__item form__item_el_job" required>
           </fieldset>
-          <button type="submit" class="popup__button-submit">Сохранить</button>
+          <button type="submit" class="form__button-submit form__button-submit_edit">Сохранить</button>
         </form>
-        <button class="popup__button-close" type="button"></button>
+        <button class="popup__close popup__close-edit" type="button"></button>
       </div>
     </section>
 
-    <section class="popup popup_add-card">
+    <section class="popup popup_added">
       <div class="popup__container">
         <h2 class="popup__title">Новое место</h2>
-        <form class="popup__form" name="popup-form">
-          <fieldset class="popup__input">
-            <input type="text" name="user-name" placeholder="Название" class="popup__item popup__item_el_title" required>
-            <input type="text" name="user-job" placeholder="Ссылка на картинку" class="popup__item popup__item_el_foto" required>
+        <form class="form form_added" name="popup-form">
+          <fieldset class="form__input">
+            <input type="text" name="user-name" placeholder="Название" class="form__item form__item_el_title" required>
+            <input type="text" name="user-job" placeholder="Ссылка на картинку" class="form__item form__item_el_foto"
+              required>
           </fieldset>
-          <button type="submit" class="popup__button-submit">Сохранить</button>
+          <button type="submit" class="form__button-submit form__button-submit_added">Сохранить</button>
         </form>
-        <button class="popup__button-close" type="button"></button>
+        <button class="popup__close popup__close-added" type="button"></button>
       </div>
     </section>
 
+    <section class="popup popup_show-card">
+      <div class="popup__card-container">
+        <img src="#" class="popup__image" alt="фотография">
+        <p class="popup__subtitle"></p>
+        <button class="popup__close popup__close-show" type="button"></button>
+      </div>
+    </section>
   </div>
 
-  <template>
-    <li>
+  <template class="template">
+    <li class="item">
       <div class="place__container">
-        <img src="./images/Arhyz.jpg" alt="фотография Архыз" class="place__image">
-        <button class="place__button place__button_type_delete" type="button"></button>
+        <img src="#" class="place__image" alt="фотография">
+        <button class="place__button-delete" type="button"></button>
         <div class="place__elements">
-          <h2 class="place__title">Архыз</h2>
-          <button class="place__button place__button_type_like place__button_active" type="button"></button>
+          <h2 class="place__title"></h2>
+          <button class="place__button-like place__buttuon-like_active" type="button"></button>
         </div>
       </div>
-    </li>  
+    </li>
   </template>
 
   <script src="./scripts/index.js"></script>
 </body>
+
 </html>
