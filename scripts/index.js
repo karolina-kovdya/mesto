@@ -1,4 +1,3 @@
-const popupElement = document.querySelector('.popup');
 const popupElementEdit = document.querySelector('.popup_edit');
 const popupElementAdded = document.querySelector('.popup_added');
 const popupElementShow = document.querySelector('.popup_show-card');
@@ -19,16 +18,12 @@ const popupCloseEdit = document.querySelector('.popup__close-edit');
 const popupCloseAdded = document.querySelector('.popup__close-added');
 const popupCloseShow = document.querySelector('.popup__close-show');
 const likeElement = document.querySelector('place__button_type_like');
-const fotoElement = document.querySelector('.place__image');
-const fotoTitle = document.querySelector('.place__title');
 const cardPic = document.querySelector('.popup__image');
 const cardTitle =document.querySelector('.popup__subtitle');
 
 initialCards.forEach((element) => {
   titleValue = element.name;
   fotoValue = element.link;
-
-  createCard(titleValue, fotoValue);
 
   const card = createCard(titleValue, fotoValue);
 
@@ -52,8 +47,8 @@ function renderCard(card, listElement) {
   listElement.prepend(card);
 }
 
-function openPopup(popupElement) {
-  popupElement.classList.add('popup_opened');
+function openPopup(popup) {
+  popup.classList.add('popup_opened');
 }
 
 function setPopupEdit() {
@@ -86,7 +81,7 @@ function submitFormEdit(evt) {
   userName.textContent = nameInput.value;
   userJob.textContent = jobInput.value;
 
-  closePopupEdit();
+  closePopup(popupElementEdit);
 }
 
 function submitFormAdded(evt) {
@@ -97,8 +92,6 @@ function submitFormAdded(evt) {
 
   titleInput.value = '';
   fotoInput.value = '';
-
-  createCard(titleValue, fotoValue);
 
   const card = createCard(titleValue, fotoValue);
 
