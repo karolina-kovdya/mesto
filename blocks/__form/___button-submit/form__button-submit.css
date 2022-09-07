@@ -7,7 +7,7 @@
     box-sizing: border-box;
     font-size: 18px;
     line-height: 1.22;
-    margin: 47px 0 0;
+    margin: 15px 0 0;
     padding: 0;
     border: none;
     border-radius: 2px;
@@ -23,7 +23,7 @@
     .form__button-submit {
         width: 238px;
         height: 46px;
-        margin-top: 46px;
+        margin-top: 14px;
         font-size: 14px;
         line-height: 1.21;
     }

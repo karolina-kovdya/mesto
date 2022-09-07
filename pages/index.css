@@ -70,9 +70,19 @@
 
 @import url(../blocks/popup/__subtitle/popup__subtitle.css);
 
+@import url(../blocks/__form/__set/form__set.css);
+
+@import url(../blocks/__form/__field/form__field.css);
+
 @import url(../blocks/__form/__input/form__input.css);
 
-@import url(../blocks/__form/__item/form__item.css);
+@import url(../blocks/__form/__input/_type/form__input_type_error.css);
+
+@import url(../blocks/__form/__input/form__input-error.css);
+
+@import url(../blocks/__form/__input/_active/form__input-error_active.css);
 
 @import url(../blocks/__form/___button-submit/form__button-submit.css);
+
+@import url(../blocks/__form/___button-submit/_disabled/form__button-submit_disabled.css);
 
