@@ -47,13 +47,13 @@ function renderCard(card, listElement) {
   listElement.prepend(card);
 }
 
-function openPopup(popup) {
+const openPopup = (popup) => {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupWithEsc);
   popup.addEventListener('click', closePopupOverlay);
 }
 
-function setPopupEdit() {
+const setPopupEdit = () => {
   nameInput.value = userName.textContent;
   jobInput.value = userJob.textContent;
 
@@ -72,9 +72,10 @@ function setPopupShow(e) {
   openPopup(popupElementShow);
 }
 
-function closePopup(popup) {
+const closePopup = (popup) => {
   
   popup.classList.remove('popup_opened');
+  
   document.removeEventListener('keydown', closePopupWithEsc);
 }
 
@@ -98,7 +99,7 @@ function closePopupWithEsc(evt) {
   });
 }
 
-function submitFormEdit() {
+const submitFormEdit = () => {
 
   userName.textContent = nameInput.value;
   userJob.textContent = jobInput.value;
