@@ -49,6 +49,8 @@ function renderCard(card, listElement) {
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupWithEsc);
+  popup.addEventListener('click', closePopupOverlay);
 }
 
 function setPopupEdit() {
@@ -70,9 +72,30 @@ function setPopupShow(e) {
   openPopup(popupElementShow);
 }
 
-function closePopup(popupElement) {
+function closePopup(popup) {
   
-  popupElement.classList.remove('popup_opened');
+  popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupWithEsc);
+}
+
+function closePopupOverlay(evt) {
+  const popupList = document.querySelectorAll('.popup');
+
+   popupList.forEach(popup => {
+    if (evt.target === evt.currentTarget) {
+      closePopup(popup);
+    }
+   });
+}
+
+function closePopupWithEsc(evt) {
+  const popupList = document.querySelectorAll('.popup');
+
+  popupList.forEach(popup => {
+    if (evt.key === 'Escape') {
+      closePopup(popup);
+    }
+  });
 }
 
 function submitFormEdit() {
