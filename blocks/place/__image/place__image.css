@@ -5,6 +5,8 @@
     object-fit: cover;
     overflow: hidden;
     cursor: pointer;
+    background-color: #000;
+    color: #fff;
 }
 
 @media screen and (max-width: 1040px) {
