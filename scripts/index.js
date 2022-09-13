@@ -11,7 +11,7 @@ const jobInput = document.querySelector('.form__input_el_job');
 const userName = document.querySelector('.profile__user-name');
 const userJob = document.querySelector('.profile__user-subname');
 const titleInput = document.querySelector('.form__input_el_title');
-const fotoInput = document.querySelector('.form__input_el_foto');
+const photoInput = document.querySelector('.form__input_el_photo');
 const templateElement = document.querySelector('.template');
 const listElement = document.querySelector('.place__list');
 const popupCloseEdit = document.querySelector('.popup__close-edit');
@@ -20,25 +20,38 @@ const popupCloseShow = document.querySelector('.popup__close-show');
 const likeElement = document.querySelector('place__button_type_like');
 const cardPic = document.querySelector('.popup__image');
 const cardTitle = document.querySelector('.popup__subtitle');
+const buttonSubmitAdded = document.querySelector('.form__button-submit_added')
+
+const validationConfig = {
+  formSelector: '.form',
+  inputSelector: '.form__input',
+  submitButtonSelector: '.form__button-submit',
+  inactiveButtonClass: 'form__button-submit_disabled',
+  inputErrorClass: 'form__input_type_error',
+  errorClass: 'form__input-error_active'
+}
+
+enableValidation(validationConfig);
 
 initialCards.forEach((element) => {
-  titleValue = element.name;
-  fotoValue = element.link;
+  const titleValue = element.name;
+  const photoValue = element.link;
 
-  const card = createCard(titleValue, fotoValue);
+  const card = createCard(titleValue, photoValue);
 
   renderCard (card, listElement);
 });
 
-function createCard(titleValue, fotoValue) {
+function createCard(titleValue, photoValue) {
   const newCardElement = templateElement.content.cloneNode(true);
 
   newCardElement.querySelector('.place__title').textContent = titleValue;
-  newCardElement.querySelector('.place__image').src = fotoValue;
+  newCardElement.querySelector('.place__image').src = photoValue;
+  newCardElement.querySelector('.place__image').alt = `Фотография ${titleValue}`;
 
   newCardElement.querySelector('.place__button-delete').addEventListener('click', deleteCard);
   newCardElement.querySelector('.place__button-like').addEventListener('click', likeCard);
-  newCardElement.querySelector('.place__image').addEventListener('click', setPopupShow);
+  newCardElement.querySelector('.place__image').addEventListener('click', openPopupShow);
 
   return newCardElement;
 }
@@ -60,7 +73,7 @@ const setPopupEdit = () => {
   openPopup(popupElementEdit);
 }
 
-function setPopupShow(e) {
+function openPopupShow(e) {
   const itemElement = e.target.closest('.item');
 
   const text = itemElement.querySelector('.place__title').textContent;
@@ -77,6 +90,7 @@ const closePopup = (popup) => {
   popup.classList.remove('popup_opened');
   
   document.removeEventListener('keydown', closePopupWithEsc);
+  popup.removeEventListener('click', closePopupOverlay);
 }
 
 function closePopupOverlay(evt) {
@@ -110,16 +124,18 @@ const submitFormEdit = () => {
 function submitFormAdded() {
 
   const title = titleInput.value;
-  const foto = fotoInput.value;
+  const photo = photoInput.value;
 
   titleInput.value = '';
-  fotoInput.value = '';
+  photoInput.value = '';
 
-  const card = createCard(title, foto);
+  const card = createCard(title, photo);
 
   renderCard (card, listElement);
 
   closePopup(popupElementAdded);
+
+  buttonSubmitAdded.classList.add('form__button-submit_disabled');
 }
 
 function deleteCard(e) {

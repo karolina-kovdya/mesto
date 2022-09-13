@@ -1,12 +1,3 @@
-const validationConfig = {
-    formSelector: '.form',
-    inputSelector: '.form__input',
-    submitButtonSelector: '.form__button-submit',
-    inactiveButtonClass: 'form__button-submit_disabled',
-    inputErrorClass: 'form__input_type_error',
-    errorClass: 'form__input-error_active'
-}
-
 const showInputError = (formElement, inputElement, errorMessage, config) => {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
     
@@ -25,7 +16,7 @@ const hideInputError = (formElement, inputElement, config) => {
     errorElement.textContent = ''; 
 }
 
-const checkValidityInput = (formElement, inputElement, config)=> {
+const toggleInputError = (formElement, inputElement, config)=> {
     if (!inputElement.validity.valid) {
         showInputError(formElement, inputElement, inputElement.validationMessage, config);
     } else {
@@ -39,11 +30,21 @@ const hasInvalidInput = (inputList) => {
     }); 
 }
 
+const enableButton = (button, config) => {
+    button.classList.add(config.inactiveButtonClass);
+    button.setAttribute('disabled', '');
+}
+
+const disableButton = (button, config) => {
+    button.classList.remove(config.inactiveButtonClass);
+    button.removeAttribute('disabled', '');
+}
+
 const toggleButtonState = (inputList, button, config) => {
     if (hasInvalidInput(inputList)) {
-        button.classList.add(config.inactiveButtonClass);
+        enableButton (button, config);
     } else {
-        button.classList.remove(config.inactiveButtonClass);
+        disableButton(button, config);
     }
 }
 
@@ -56,7 +57,7 @@ const setEventListeners = (formElement, config) => {
     
     inputList.forEach((inputElement) => {
          inputElement.addEventListener('input', function(){
-            checkValidityInput(formElement, inputElement, config)
+            toggleInputError(formElement, inputElement, config)
 
             toggleButtonState(inputList, button, config);
          });
@@ -73,8 +74,3 @@ function enableValidation (config) {
     setEventListeners(formElement, config);
 }); 
 }
-enableValidation(validationConfig);
-
-
-
-
