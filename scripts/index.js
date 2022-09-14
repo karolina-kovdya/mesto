@@ -20,7 +20,8 @@ const popupCloseShow = document.querySelector('.popup__close-show');
 const likeElement = document.querySelector('place__button_type_like');
 const cardPic = document.querySelector('.popup__image');
 const cardTitle = document.querySelector('.popup__subtitle');
-const buttonSubmitAdded = document.querySelector('.form__button-submit_added')
+const buttonSubmitAdded = document.querySelector('.form__button-submit_added');
+const inputError = document.querySelector('.form__input-error');
 
 const validationConfig = {
   formSelector: '.form',
@@ -71,6 +72,7 @@ const setPopupEdit = () => {
   jobInput.value = userJob.textContent;
 
   openPopup(popupElementEdit);
+  resetValidation(formElementEdit, validationConfig);
 }
 
 function openPopupShow(e) {
@@ -94,23 +96,17 @@ const closePopup = (popup) => {
 }
 
 function closePopupOverlay(evt) {
-  const popupList = document.querySelectorAll('.popup');
-
-   popupList.forEach(popup => {
-    if (evt.target === evt.currentTarget) {
-      closePopup(popup);
-    }
-   });
+  if (evt.target === evt.currentTarget) {
+    const popupOpened = document.querySelector('.popup_opened');
+    closePopup(popupOpened);
+  }
 }
 
 function closePopupWithEsc(evt) {
-  const popupList = document.querySelectorAll('.popup');
-
-  popupList.forEach(popup => {
-    if (evt.key === 'Escape') {
-      closePopup(popup);
-    }
-  });
+  if (evt.key === 'Escape') {
+    const popupOpened = document.querySelector('.popup_opened');
+    closePopup(popupOpened);
+  }
 }
 
 const submitFormEdit = () => {
@@ -126,16 +122,11 @@ function submitFormAdded() {
   const title = titleInput.value;
   const photo = photoInput.value;
 
-  titleInput.value = '';
-  photoInput.value = '';
-
   const card = createCard(title, photo);
 
   renderCard (card, listElement);
 
   closePopup(popupElementAdded);
-
-  buttonSubmitAdded.classList.add('form__button-submit_disabled');
 }
 
 function deleteCard(e) {
@@ -151,6 +142,9 @@ function likeCard(e) {
 popupEdit.addEventListener('click', setPopupEdit);
 popupAdded.addEventListener('click', function(){
   openPopup(popupElementAdded);
+  buttonSubmitAdded.classList.add('form__button-submit_disabled');
+  formElementAdded.reset();
+  resetValidation(formElementAdded, validationConfig);
 });
 formElementEdit.addEventListener('submit', submitFormEdit);
 formElementAdded.addEventListener('submit', submitFormAdded);
