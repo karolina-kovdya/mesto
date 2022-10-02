@@ -11,5 +11,5 @@
     z-index: 1;
     visibility: hidden;
     opacity: 0;
-    transition: visibility 0s, opacity 0.5s linear;
+    transition: all 0.6sgi linear 0s;
 }
