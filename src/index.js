@@ -1,6 +1,7 @@
 import { initialCards } from "./initialCards.js";
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
+import '../pages/index.css'
 
 const popupElementEdit = document.querySelector(".popup_edit");
 const popupElementAdded = document.querySelector(".popup_added");

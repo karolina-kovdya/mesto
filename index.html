@@ -3,7 +3,6 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="./pages/index.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Место</title>
 </head>
@@ -17,7 +16,7 @@
 
       <section class="profile">
         <div class="profile__container">
-          <img class="profile__avatar" src="./images/avatar.jpg" alt="фото профиля">
+          <img class="profile__avatar" src= "<%=require('./images/avatar.jpg')%>" alt="фото профиля">
           <div class="profile__user-information">
             <h1 class="profile__user-name">Жак-Ив Кусто</h1>
             <p class="profile__user-subname">Исследователь океана</p>
@@ -98,8 +97,7 @@
       </div>
     </li>
   </template>
-
-  <script defer type="module" src="./scripts/index.js"></script>
+  
 </body>
 
 </html>
