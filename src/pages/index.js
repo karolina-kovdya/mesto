@@ -1,57 +1,49 @@
-import { initialCards } from "./initialCards.js";
-import Card from "./Card.js";
-import FormValidator from "./FormValidator.js";
-import '../pages/index.css'
+import { initialCards } from "../utils/constants.js";
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
+import "./index.css";
+import {
+  popupElementEdit,
+  popupElementAdded,
+  popupElementShow,
+  formElementAdded,
+  formElementEdit,
+  popupAdded,
+  popupEdit,
+  popupCloseAdded,
+  popupCloseEdit,
+  popupCloseShow,
+  nameInput,
+  jobInput,
+  userName,
+  userJob,
+  cardPic,
+  cardTitle,
+  titleInput,
+  photoInput,
+  cardListSelector,
+  validationConfig
 
-const popupElementEdit = document.querySelector(".popup_edit");
-const popupElementAdded = document.querySelector(".popup_added");
-const popupElementShow = document.querySelector(".popup_show-card");
-const formElementEdit = document.querySelector(".form_edit");
-const formElementAdded = document.querySelector(".form_added");
-const popupEdit = document.querySelector(".profile__button_type_edit");
-const popupAdded = document.querySelector(".profile__button_type_add");
-const nameInput = document.querySelector(".form__input_el_name");
-const jobInput = document.querySelector(".form__input_el_job");
-const userName = document.querySelector(".profile__user-name");
-const userJob = document.querySelector(".profile__user-subname");
-const titleInput = document.querySelector(".form__input_el_title");
-const photoInput = document.querySelector(".form__input_el_photo");
-const popupCloseEdit = document.querySelector(".popup__close-edit");
-const popupCloseAdded = document.querySelector(".popup__close-added");
-const popupCloseShow = document.querySelector(".popup__close-show");
-const cardPic = document.querySelector(".popup__image");
-const cardTitle = document.querySelector(".popup__subtitle");
-const cardPlace = document.querySelector(".place__list");
+} from "../utils/constants.js";
+import Section from "../components/section.js";
 
-const validationConfig = {
-  formSelector: ".form",
-  inputSelector: ".form__input",
-  submitButtonSelector: ".form__button-submit",
-  inactiveButtonClass: "form__button-submit_disabled",
-  inputErrorClass: "form__input_type_error",
-  errorClass: "form__input-error_active",
-};
+const cardList = new Section ({ 
+  items: initialCards,
+  renderer: (item) => {
+    const card = new Card(item, ".template", openPopupShow);
+    const cardElement = card.generateCard();
+
+    cardList.addItem(cardElement);
+  }
+}, cardListSelector);
+
+cardList.renderItems();
 
 const formEditValidator = new FormValidator(validationConfig, formElementEdit);
 const formAddValidator = new FormValidator(validationConfig, formElementAdded);
 
 formEditValidator.enableValidation();
 formAddValidator.enableValidation();
-
-function createCard(data) {
-  const card = new Card(data, ".template", openPopupShow);
-  const cardElement = card.generateCard();
-  return cardElement;
-}
-
-function renderCard(data) {
-  const newCard = createCard(data);
-  cardPlace.prepend(newCard);
-}
-
-initialCards.forEach((data) => {
-  renderCard(data);
-});
 
 const openPopup = (popup) => {
   popup.classList.add("popup_opened");
