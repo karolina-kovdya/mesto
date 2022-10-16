@@ -3,17 +3,17 @@ export default class Card {
   #link;
   #templateSelector;
   #element;
-  #openPopupShow;
+  #handleCardClick;
   #cardTitle;
   #cardImage;
   #buttonDelete;
   #buttonLike;
 
-  constructor(data, templateSelector, openPopupShow) {
+  constructor(data, templateSelector, {handleCardClick}) {
     this.#name = data.name;
     this.#link = data.link;
     this.#templateSelector = templateSelector;
-    this.#openPopupShow = openPopupShow;
+    this.#handleCardClick = handleCardClick;
   }
 
   #getTemplate() {
@@ -34,7 +34,7 @@ export default class Card {
   }
 
   #openCard() {
-    this.#openPopupShow({ name: this.#name, link: this.#link });
+    this.#handleCardClick({ name: this.#name, link: this.#link });
   }
 
   #setEventListeners() {

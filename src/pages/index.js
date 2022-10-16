@@ -10,34 +10,79 @@ import {
   formElementEdit,
   popupAdded,
   popupEdit,
-  popupCloseAdded,
-  popupCloseEdit,
-  popupCloseShow,
+  cardListSelector,
+  validationConfig,
   nameInput,
   jobInput,
   userName,
   userJob,
-  cardPic,
-  cardTitle,
-  titleInput,
-  photoInput,
-  cardListSelector,
-  validationConfig
-
 } from "../utils/constants.js";
 import Section from "../components/section.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import UserInfo from "../components/UserInfo.js";
+import PopupWithImages from "../components/PopupWithImages.js";
 
-const cardList = new Section ({ 
-  items: initialCards,
-  renderer: (item) => {
-    const card = new Card(item, ".template", openPopupShow);
-    const cardElement = card.generateCard();
+const createCard = (data) => {
+  const card = new Card(data, ".template", {
+    handleCardClick: () => {
+      popupWithImages.open(data);
+    },
+  });
+  const cardElement = card.generateCard();
 
-    cardList.addItem(cardElement);
-  }
-}, cardListSelector);
+  return cardElement;
+};
 
+const cardList = new Section(
+  {
+    items: initialCards,
+    renderer: (data) => {
+      cardList.addItem(createCard(data));
+    },
+  },
+  cardListSelector
+);
 cardList.renderItems();
+
+const popupWithImages = new PopupWithImages(popupElementShow);
+popupWithImages.setEventListeners();
+
+const userInformation = new UserInfo({
+  nameSelector: userName,
+  jobSelector: userJob,
+});
+
+const popupFormEdit = new PopupWithForm({
+  handleSubmitForm: (formData) => {
+    userInformation.setUserInfo(formData);
+    popupFormEdit.close();
+  },
+}, popupElementEdit,
+);
+popupFormEdit.setEventListeners();
+
+const setPopupEdit = () => {
+  const profileInfo = userInformation.getUserInfo();
+  nameInput.value = profileInfo.name;
+  jobInput.value = profileInfo.job;
+  formEditValidator.resetValidation();
+  popupFormEdit.open();
+};
+
+const popupFormAdd = new PopupWithForm({
+  handleSubmitForm: (data) => {
+    cardList.addItem(createCard(data));
+    popupFormAdd.close();
+  },
+}, popupElementAdded,
+);
+popupFormAdd.setEventListeners();
+
+const setPopupAdd = () => {
+  popupFormAdd.open();
+  formElementAdded.reset();
+  formAddValidator.resetValidation();
+};
 
 const formEditValidator = new FormValidator(validationConfig, formElementEdit);
 const formAddValidator = new FormValidator(validationConfig, formElementAdded);
@@ -45,88 +90,6 @@ const formAddValidator = new FormValidator(validationConfig, formElementAdded);
 formEditValidator.enableValidation();
 formAddValidator.enableValidation();
 
-const openPopup = (popup) => {
-  popup.classList.add("popup_opened");
-  document.addEventListener("keydown", closePopupWithEsc);
-  popup.addEventListener("click", closePopupOverlay);
-};
-
-const setPopupEdit = () => {
-  nameInput.value = userName.textContent;
-  jobInput.value = userJob.textContent;
-
-  openPopup(popupElementEdit);
-  formEditValidator.resetValidation();
-};
-
-function openPopupShow(data) {
-  cardTitle.textContent = data.name;
-  cardPic.src = data.link;
-
-  openPopup(popupElementShow);
-}
-
-const setPopupAdd = () => {
-  openPopup(popupElementAdded);
-  formElementAdded.reset();
-  formAddValidator.resetValidation();
-};
-
-const closePopup = (popup) => {
-  popup.classList.remove("popup_opened");
-
-  document.removeEventListener("keydown", closePopupWithEsc);
-  popup.removeEventListener("click", closePopupOverlay);
-};
-
-function closePopupOverlay(evt) {
-  if (evt.target === evt.currentTarget) {
-    const popupOpened = document.querySelector(".popup_opened");
-    closePopup(popupOpened);
-  }
-}
-
-function closePopupWithEsc(evt) {
-  if (evt.key === "Escape") {
-    const popupOpened = document.querySelector(".popup_opened");
-    closePopup(popupOpened);
-  }
-}
-
-const handleEditFormSubmit = (evt) => {
-  evt.preventDefault();
-
-  userName.textContent = nameInput.value;
-  userJob.textContent = jobInput.value;
-
-  closePopup(popupElementEdit);
-};
-
-function handleAddFormSubmit(evt) {
-  evt.preventDefault();
-
-  const title = titleInput.value;
-  const photo = photoInput.value;
-
-  const newCard = new Object();
-  newCard.name = title;
-  newCard.link = photo;
-
-  renderCard(newCard);
-
-  closePopup(popupElementAdded);
-}
-
 popupEdit.addEventListener("click", setPopupEdit);
 popupAdded.addEventListener("click", setPopupAdd);
-formElementEdit.addEventListener("submit", handleEditFormSubmit);
-formElementAdded.addEventListener("submit", handleAddFormSubmit);
-popupCloseEdit.addEventListener("click", function () {
-  closePopup(popupElementEdit);
-});
-popupCloseAdded.addEventListener("click", function () {
-  closePopup(popupElementAdded);
-});
-popupCloseShow.addEventListener("click", function () {
-  closePopup(popupElementShow);
-});
+

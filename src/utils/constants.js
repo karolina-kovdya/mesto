@@ -25,9 +25,9 @@ export const initialCards = [
     }
   ];
 
-export const popupElementEdit = document.querySelector(".popup_edit");
-export const popupElementAdded = document.querySelector(".popup_added");
-export const popupElementShow = document.querySelector(".popup_show-card");
+export const popupElementEdit = ".popup_edit";
+export const popupElementAdded = ".popup_added";
+export const popupElementShow = ".popup_show-card";
 export const formElementEdit = document.querySelector(".form_edit");
 export const formElementAdded = document.querySelector(".form_added");
 export const popupEdit = document.querySelector(".profile__button_type_edit");
