@@ -55,7 +55,6 @@ const userInformation = new UserInfo({
 const popupFormEdit = new PopupWithForm({
   handleSubmitForm: (formData) => {
     userInformation.setUserInfo(formData);
-    popupFormEdit.close();
   },
 }, popupElementEdit,
 );
@@ -72,7 +71,6 @@ const setPopupEdit = () => {
 const popupFormAdd = new PopupWithForm({
   handleSubmitForm: (data) => {
     cardList.addItem(createCard(data));
-    popupFormAdd.close();
   },
 }, popupElementAdded,
 );
