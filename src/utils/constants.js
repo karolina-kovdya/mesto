@@ -38,11 +38,8 @@ export const userName = document.querySelector(".profile__user-name");
 export const userJob = document.querySelector(".profile__user-subname");
 export const titleInput = document.querySelector(".form__input_el_title");
 export const photoInput = document.querySelector(".form__input_el_photo");
-export const popupCloseEdit = document.querySelector(".popup__close-edit");
-export const popupCloseAdded = document.querySelector(".popup__close-added");
-export const popupCloseShow = document.querySelector(".popup__close-show");
-export const cardPic = document.querySelector(".popup__image");
 export const cardTitle = document.querySelector(".popup__subtitle");
+export const cardPic = document.querySelector(".popup__image")
 export const cardListSelector = ".place__list";
 
 export const validationConfig = {

@@ -61,11 +61,11 @@ const popupFormEdit = new PopupWithForm({
 popupFormEdit.setEventListeners();
 
 const setPopupEdit = () => {
+  popupFormEdit.open();
   const profileInfo = userInformation.getUserInfo();
   nameInput.value = profileInfo.name;
   jobInput.value = profileInfo.job;
   formEditValidator.resetValidation();
-  popupFormEdit.open();
 };
 
 const popupFormAdd = new PopupWithForm({
