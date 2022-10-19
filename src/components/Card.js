@@ -27,6 +27,7 @@ export default class Card {
 
   #deleteCard() {
     this.#element.remove();
+    this.#element = null;
   }
 
   #likeCard() {

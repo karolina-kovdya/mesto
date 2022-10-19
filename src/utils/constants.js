@@ -34,12 +34,10 @@ export const popupEdit = document.querySelector(".profile__button_type_edit");
 export const popupAdded = document.querySelector(".profile__button_type_add");
 export const nameInput = document.querySelector(".form__input_el_name");
 export const jobInput = document.querySelector(".form__input_el_job");
-export const userName = document.querySelector(".profile__user-name");
-export const userJob = document.querySelector(".profile__user-subname");
+export const userName = ".profile__user-name";
+export const userJob = ".profile__user-subname";
 export const titleInput = document.querySelector(".form__input_el_title");
 export const photoInput = document.querySelector(".form__input_el_photo");
-export const cardTitle = document.querySelector(".popup__subtitle");
-export const cardPic = document.querySelector(".popup__image")
 export const cardListSelector = ".place__list";
 
 export const validationConfig = {

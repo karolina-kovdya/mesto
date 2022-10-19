@@ -18,9 +18,9 @@ import {
   userJob,
 } from "../utils/constants.js";
 import Section from "../components/section.js";
-import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 import PopupWithImages from "../components/PopupWithImages.js";
+import PopupWithForm from "../components/PopupWithForm.js";
 
 const createCard = (data) => {
   const card = new Card(data, ".template", {
@@ -52,12 +52,11 @@ const userInformation = new UserInfo({
   jobSelector: userJob,
 });
 
-const popupFormEdit = new PopupWithForm({
+const popupFormEdit = new PopupWithForm(popupElementEdit, {
   handleSubmitForm: (formData) => {
     userInformation.setUserInfo(formData);
   },
-}, popupElementEdit,
-);
+});
 popupFormEdit.setEventListeners();
 
 const setPopupEdit = () => {
@@ -68,26 +67,25 @@ const setPopupEdit = () => {
   formEditValidator.resetValidation();
 };
 
-const popupFormAdd = new PopupWithForm({
+popupEdit.addEventListener("click", setPopupEdit);
+
+
+const popupFormAdd = new PopupWithForm(popupElementAdded, {
   handleSubmitForm: (data) => {
     cardList.addItem(createCard(data));
   },
-}, popupElementAdded,
-);
+});
 popupFormAdd.setEventListeners();
 
 const setPopupAdd = () => {
   popupFormAdd.open();
-  formElementAdded.reset();
   formAddValidator.resetValidation();
 };
+
+popupAdded.addEventListener("click", setPopupAdd);
 
 const formEditValidator = new FormValidator(validationConfig, formElementEdit);
 const formAddValidator = new FormValidator(validationConfig, formElementAdded);
 
 formEditValidator.enableValidation();
 formAddValidator.enableValidation();
-
-popupEdit.addEventListener("click", setPopupEdit);
-popupAdded.addEventListener("click", setPopupAdd);
-
