@@ -16,7 +16,10 @@
 
       <section class="profile">
         <div class="profile__container">
-          <img class="profile__avatar" src= "<%=require('./images/avatar.jpg')%>" alt="фото профиля">
+          <div class="profile__cont-av">
+            <img class="profile__avatar" src= "" alt="фото профиля">
+            <img class="profile__cursor" src="<%=require('./images/avatarcursor.svg')%>" alt="Редактировать">
+          </div>
           <div class="profile__user-information">
             <h1 class="profile__user-name">Жак-Ив Кусто</h1>
             <p class="profile__user-subname">Исследователь океана</p>
@@ -76,6 +79,22 @@
       </div>
     </section>
 
+    <section class="popup popup_change-avatar">
+      <div class="popup__container">
+        <h2 class="popup__title">Обновить аватар</h2>
+        <form class="form form_change-avatar" name="form-change" novalidate>
+          <fieldset class="form__set">
+            <div class="form__field">
+              <input type="text" name="avatar" placeholder="Ссылка на картинку" id="avatar-input" class="form__input form__input_avatar" required>
+              <span class="form__input-error avatar-input-error"></span>
+            </div>
+          </fieldset>
+          <button type="submit" class="form__button-submit form__button-submit_change-avatar">Сохранить</button>
+        </form>
+        <button class="popup__close popup__close-change-avatar" type="button" aria-label="Close"></button>
+      </div>
+    </section>
+
     <section class="popup popup_show-card">
       <div class="popup__card-container">
         <img src="#" class="popup__image">
@@ -85,6 +104,16 @@
     </section>
   </div>
 
+  <section class="popup popup_delete-card">
+    <div class="popup__container">
+      <h2 class="popup__title">Вы уверены?</h2>
+      <form class="form form_delete-card" name="form-delete" novalidate>
+        <button type="submit" class="form__button-submit form__button-submit_delete-card">Да</button>
+      </form>
+      <button class="popup__close popup__close-delete-card" type="button" aria-label="Close"></button>
+    </div>
+  </section>
+
   <template class="template">
     <li class="item">
       <div class="place__container">
@@ -92,7 +121,10 @@
         <button class="place__button-delete" type="button" aria-label="Delete"></button>
         <div class="place__elements">
           <h2 class="place__title"></h2>
-          <button class="place__button-like place__buttuon-like_active" type="button" aria-label="Like"></button>
+          <div class="place__el-like">
+            <button class="place__button-like" type="button" aria-label="Like"></button>
+            <span class="place__counter"></span>
+          </div>
         </div>
       </div>
     </li>

@@ -1,0 +1,12 @@
+.profile__cursor {
+  width: 26px;
+  height: 26px;
+  position: absolute;
+  top: 47px;
+  left: 47px;
+  opacity: 0;
+}
+
+.profile__cont-av:hover .profile__cursor {
+  opacity: 1;
+}
