@@ -112,6 +112,7 @@ const popupFormEdit = new PopupWithForm(popupElementEdit, {
       .editProfile(data.name, data.job)
       .then((formData) => {
         userInformation.setUserInfo(formData);
+        popupFormEdit.close();
       })
       .catch((err) => console.log(err))
       .finally(() => {
@@ -137,7 +138,8 @@ const popupAvatar = new PopupWithForm(popupElementChange, {
     api
       .changeAvatar(data.avatar)
       .then((formData) => {
-        userInformation.setUserAvatar(formData.avatar);
+        userInformation.setUserInfo(formData);
+        popupAvatar.close();
       })
       .catch((err) => console.log(err))
       .finally(() => {
@@ -162,6 +164,7 @@ const popupFormAdd = new PopupWithForm(popupElementAdded, {
       .addNewCard(data.name, data.link)
       .then((data) => {
         cardList.addItem(createCard(data));
+        popupFormAdd.close()
       })
       .catch((err) => console.log(err))
       .finally(() => {

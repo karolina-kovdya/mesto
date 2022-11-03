@@ -5,6 +5,7 @@
   top: 47px;
   left: 47px;
   opacity: 0;
+  cursor: pointer;
 }
 
 .profile__cont-av:hover .profile__cursor {

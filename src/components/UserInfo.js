@@ -23,8 +23,4 @@ export default class UserInfo {
     this.#userJob.textContent = formData.about;
     this.#userAvatar.src = formData.avatar;
   }
-
-  setUserAvatar(formData) {
-    this.#userAvatar.src = formData.avatar
-  }
 }
