@@ -21,7 +21,6 @@ export default class PopupWithConfirmation extends Popup {
       evt.preventDefault();
 
       this.#submitDelete();
-      this.close();
     });
   }
 }

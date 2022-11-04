@@ -50,6 +50,7 @@ const createCard = (data) => {
           .deleteCard(cardId)
           .then(() => {
             card.deleteCard();
+            popupWithConfirm.close();
           })
           .catch((err) => console.log(err));
       });
@@ -87,11 +88,13 @@ const cardList = new Section(
   cardListSelector
 );
 
-Promise.all([api.getCards(), api.getUserInfo()]).then(([cards, userInfo]) => {
-  userId = userInfo._id;
-  cardList.renderItems(cards);
-  userInformation.setUserInfo(userInfo);
-});
+Promise.all([api.getCards(), api.getUserInfo()])
+  .then(([cards, userInfo]) => {
+    userId = userInfo._id;
+    cardList.renderItems(cards);
+    userInformation.setUserInfo(userInfo);
+  })
+  .catch((err) => console.log(err));
 
 const popupWithConfirm = new PopupWithConfirmation(popupElementDelete);
 popupWithConfirm.setEventListeners();
@@ -164,7 +167,7 @@ const popupFormAdd = new PopupWithForm(popupElementAdded, {
       .addNewCard(data.name, data.link)
       .then((data) => {
         cardList.addItem(createCard(data));
-        popupFormAdd.close()
+        popupFormAdd.close();
       })
       .catch((err) => console.log(err))
       .finally(() => {
@@ -183,10 +186,7 @@ popupAdded.addEventListener("click", setPopupAdd);
 
 const formEditValidator = new FormValidator(validationConfig, formElementEdit);
 const formAddValidator = new FormValidator(validationConfig, formElementAdded);
-const formAvatarValidator = new FormValidator(
-  validationConfig,
-  formChangeAvatar
-);
+const formAvatarValidator = new FormValidator(validationConfig,formChangeAvatar);
 
 formEditValidator.enableValidation();
 formAddValidator.enableValidation();
