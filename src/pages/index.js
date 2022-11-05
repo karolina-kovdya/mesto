@@ -155,7 +155,7 @@ popupAvatar.setEventListeners();
 
 const setPopupChangeAvatar = () => {
   popupAvatar.open();
-  formAddValidator.resetValidation();
+  formAvatarValidator.resetValidation();
 };
 
 popupChange.addEventListener("click", setPopupChangeAvatar);
