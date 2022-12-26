@@ -29,9 +29,9 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 
 const api = new Api({
-  url: "https://mesto.nomoreparties.co/v1/cohort-52",
+  url: "https://mesto.nomoreparties.co/v1/cohort-55",
   headers: {
-    authorization: "40b87cce-85a4-4ba9-8753-335bfa689170",
+    authorization: "0b4c7e6f-3cd9-4478-b002-67ae938bbef3",
     "Content-Type": "application/json",
   },
 });
